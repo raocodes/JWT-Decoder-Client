@@ -27,12 +27,12 @@
       </div>
     </div>
 
-    <div class="row gy-3 mb-5">
-      <div class="col-lg-6 col-md-12">
+    <div class="row mb-3">
+      <div class="col-lg-12">
         <div class="card h-100">
           <div class="card-header">PASTE YOUR TOKEN HERE</div>
           <div class="card-body">
-            <textarea class="form-control mt-2 mb-4 h-100" id="tokeninput" rows="10"></textarea>
+            <textarea class="form-control mt-3 mb-3 h-100" id="tokeninput" rows="5"></textarea>
           </div>
           <div class="text-center">
             <button type="button" class="btn btn-primary my-3 w-25 me-2 text-center" id="decodejwtbtn">DECODE</button>
@@ -40,15 +40,26 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="row gy-3 mb-3">
       <div class="col-lg-6 col-md-12">
         <div class="card h-100">
-          <div class="card-header">JWT PAYLOAD</div>
+          <div class="card-header">JWT PAYLOAD DATA</div>
           <div class="card-body">
-            <pre><code id="tokenresult">Output goes here...</code></pre>
+            <pre><code id="tokenresult">Data goes here...</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card h-100">
+          <div class="card-header">JWT HEADERS</div>
+          <div class="card-body">
+            <pre><code id="tokenheaders">Headers go here...</code></pre>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 
