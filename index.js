@@ -1,5 +1,3 @@
-import jwt_decode from './jwt-decode.js';
-
 const decodebutton = document.getElementById('decodejwtbtn');
 const clearbutton = document.getElementById('clearjwtbtn');
 const input = document.getElementById('tokeninput');
@@ -13,6 +11,7 @@ decodebutton.addEventListener('click', function () {
 		console.log('The field is empty');
 	} else {
 		try {
+			// eslint-disable-next-line no-undef
 			let decoded = jwt_decode(token);
 			let myJSON = JSON.stringify(decoded, null, 4);
 			console.log(myJSON);
