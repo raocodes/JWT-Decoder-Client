@@ -1,3 +1,5 @@
+const jwt_decode = require('jwt-decode');
+
 const decodebutton = document.getElementById('decodejwtbtn');
 const clearbutton = document.getElementById('clearjwtbtn');
 const input = document.getElementById('tokeninput');
