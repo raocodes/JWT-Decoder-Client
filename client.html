@@ -11,6 +11,10 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <title>JWT Decoder</title>
+
+  <!-- Load the scripts after the DOM is loaded -->
+  <script src="jwt-decode.js" defer></script>
+  <script src="index.js" defer></script>
 </head>
 
 <body>
@@ -28,8 +32,8 @@
         <div class="card h-100">
           <div class="card-header">PASTE YOUR TOKEN HERE</div>
           <div class="card-body">
-            <textarea class="form-control mt-2 mb-4" id="tokentextarea" rows="8"></textarea>
-            <a href="#" class="btn btn-primary">Process JWT</a>
+            <textarea class="form-control mt-2 mb-4" id="tokeninput" rows="8"></textarea>
+            <button type="button" class="btn btn-primary" id="processjwtbtn">Process JWT</button>
           </div>
         </div>
       </div>
@@ -37,7 +41,7 @@
         <div class="card h-100">
           <div class="card-header">JWT PAYLOAD</div>
           <div class="card-body">
-            <p class="card-text">Blah blah</p>
+            <pre><code id="tokenresult">blah blah</code></pre>
           </div>
         </div>
       </div>
