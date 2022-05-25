@@ -38,5 +38,6 @@ decodebutton.addEventListener('click', function () {
 
 clearbutton.addEventListener('click', function () {
     input.value = '';
-    result.textContent = 'Output goes here...';
+    result.textContent = 'Data goes here...';
+    headers.textContent = 'Headers go here...';
 });
