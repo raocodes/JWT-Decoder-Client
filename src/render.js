@@ -40,11 +40,11 @@ decodebutton.addEventListener('click', function () {
     } else {
         try {
             let decoded = jwt_decode(token);
-            let decodedJSON = JSON.stringify(decoded, null, 4);
+            let decodedJSON = JSON.stringify(decoded, null, 2);
             result.textContent = decodedJSON;
 
             var decodedHeader = jwt_decode(token, { header: true });
-            let decodedHeaderJSON = JSON.stringify(decodedHeader, null, 4);
+            let decodedHeaderJSON = JSON.stringify(decodedHeader, null, 2);
             headers.textContent = decodedHeaderJSON;
             removeAlert();
         } catch (e) {
