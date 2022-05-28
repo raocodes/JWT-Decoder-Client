@@ -62,6 +62,8 @@ decodeButton.addEventListener('click', function () {
             decodedHeader = jwt_decode(token, { header: true });
             let decodedHeaderJSON = JSON.stringify(decodedHeader, null, 4);
             headers.innerHTML = decodedHeaderJSON;
+            algorithm.innerHTML = `<strong>${decodedHeader.alg}</strong>`;
+
             removeAlert();
         } catch (e) {
             if (e.name === 'InvalidTokenError') {
@@ -106,9 +108,13 @@ validateButton.addEventListener('click', function () {
         let type = 'warning';
         let message = 'Secret field cannot be empty!';
         createAlert(type, message);
+    } else if (decodedHeader.alg != 'HS256' && decodedHeader.alg != 'HS384' && decodedHeader.alg != 'HS512') {
+        let type = 'danger';
+        let message = 'This algorithm is unsupported, only HS256/HS384/HS512 are supported!';
+        createAlert(type, message);
+        return;
     } else {
         removeAlert();
-        algorithm.innerHTML = `<strong>${decodedHeader.alg}</strong>`;
         try {
             jwt.verify(token, secret);
             validityResult.innerHTML = '<strong style="color: green">JWT Signature is VALID</strong>';
