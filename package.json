@@ -1,8 +1,8 @@
 {
   "name": "jwt-decoder-client",
-  "productName": "jwt-decoder-client",
+  "productName": "JWT Decoder",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A simple web app to decode your JWT tokens!",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
