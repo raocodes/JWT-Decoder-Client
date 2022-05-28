@@ -100,12 +100,21 @@ validateButton.addEventListener('click', function () {
         createAlert(type, message);
     } else {
         removeAlert();
-        algorithm.innerHTML = decodedHeader.alg;
+        algorithm.innerHTML = `<strong>${decodedHeader.alg}</strong>`;
         try {
             jwt.verify(token, secret);
-            validityResult.innerHTML = '<strong>JWT Signature is VALID</strong>';
+            validityResult.innerHTML = '<strong style="color: green">JWT Signature is VALID</strong>';
         } catch (e) {
-            validityResult.innerHTML = `<strong>${e.message}</strong>`;
+            switch (e.message) {
+                case 'invalid signature':
+                    validityResult.innerHTML = '<strong style="color: red">JWT Signature is INVALID</strong>';
+                    break;
+                case 'jwt expired':
+                    validityResult.innerHTML = '<strong style="color: red">JWT Token is EXPIRED</strong>';
+                    break;
+                default:
+                    validityResult.innerHTML = `<strong style="color: red>${e.message}</strong>`;
+            }
         }
     }
 });
