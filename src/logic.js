@@ -41,6 +41,11 @@ function createAlert(type, message) {
 }
 
 decodeButton.addEventListener('click', function () {
+    // Clears out verification data
+    validityResult.innerHTML = '';
+    secretInput.value = '';
+    algorithm.innerHTML = '';
+
     // value works instead of innerHTML or innerText because this is a form element
     token = input.value;
     // === takes into account data type whereas == does not
@@ -86,6 +91,9 @@ clearButton.addEventListener('click', function () {
     removeAlert();
     decodedToken = null;
     decodedHeader = null;
+    validityResult.innerHTML = '';
+    secretInput.value = '';
+    algorithm.innerHTML = '';
 });
 
 validateButton.addEventListener('click', function () {
