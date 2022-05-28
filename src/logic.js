@@ -6,7 +6,7 @@ const clearButton = document.getElementById('clearjwtbtn');
 const input = document.getElementById('tokeninput');
 const result = document.getElementById('tokenresult');
 const headers = document.getElementById('tokenheaders');
-const alertColumn = document.getElementById('alertcolumn');
+const alertRow = document.getElementById('alertrow');
 const validateButton = document.getElementById('validatejwtbtn');
 const algorithm = document.getElementById('algorithmresult');
 const secretInput = document.getElementById('secretinput');
@@ -23,7 +23,7 @@ let token = null;
 function removeAlert() {
     if (flag == true) {
         // An alert exists already and we are removing it
-        alertColumn.removeChild(alertColumn.firstChild);
+        alertRow.removeChild(alertRow.firstChild);
         flag = false;
     }
 }
@@ -36,7 +36,7 @@ function createAlert(type, message) {
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`;
-    alertColumn.insertBefore(alert, alertColumn.firstChild);
+    alertRow.insertBefore(alert, alertRow.firstChild);
     flag = true;
 }
 
@@ -51,11 +51,11 @@ decodeButton.addEventListener('click', function () {
     } else {
         try {
             decodedToken = jwt_decode(token);
-            let decodedTokenJSON = JSON.stringify(decodedToken, null, 2);
+            let decodedTokenJSON = JSON.stringify(decodedToken, null, 4);
             result.innerHTML = decodedTokenJSON;
 
             decodedHeader = jwt_decode(token, { header: true });
-            let decodedHeaderJSON = JSON.stringify(decodedHeader, null, 2);
+            let decodedHeaderJSON = JSON.stringify(decodedHeader, null, 4);
             headers.innerHTML = decodedHeaderJSON;
             removeAlert();
         } catch (e) {

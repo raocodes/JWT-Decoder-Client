@@ -23,34 +23,16 @@
       </div>
     </div>
 
-    <div class="row mb-3">
-      <div class="col-lg-12" id="alertcolumn">
-        <div class="card">
+    <div class="row mb-3" id="alertrow">
+      <div class="col-lg-8 col-md-12">
+        <div class="card h-100">
           <div class="card-header">PASTE YOUR TOKEN HERE</div>
           <div class="card-body">
-            <textarea class="form-control" id="tokeninput" rows="4"></textarea>
+            <textarea class="form-control" id="tokeninput" rows="8"></textarea>
           </div>
           <div class="text-center">
             <button type="button" class="btn btn-primary mb-3 w-25 me-2" id="decodejwtbtn">DECODE</button>
             <button type="button" class="btn btn-danger mb-3 w-25 ms-2" id="clearjwtbtn">CLEAR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row gy-3 mb-3">
-      <div class="col-lg-5 col-md-12">
-        <div class="card h-100">
-          <div class="card-header">JWT PAYLOAD DATA</div>
-          <div class="card-body">
-            <pre><code id="tokenresult">Data goes here...</code></pre>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-12">
-        <div class="card h-100">
-          <div class="card-header">JWT HEADERS</div>
-          <div class="card-body">
-            <pre><code id="tokenheaders">Headers go here...</code></pre>
           </div>
         </div>
       </div>
@@ -64,6 +46,25 @@
               <button type="button" class="btn btn-primary mb-3 w-50" id="validatejwtbtn">VALIDATE</button>
             </div>
             <p class="card-text text-center" id="validityresult">Is valid?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row gy-3 mb-3">
+      <div class="col-lg-8 col-md-12">
+        <div class="card h-100">
+          <div class="card-header">JWT PAYLOAD DATA</div>
+          <div class="card-body">
+            <pre><code id="tokenresult">Data goes here...</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <div class="card h-100">
+          <div class="card-header">JWT HEADERS</div>
+          <div class="card-body">
+            <pre><code id="tokenheaders">Headers go here...</code></pre>
           </div>
         </div>
       </div>
