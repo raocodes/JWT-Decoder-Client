@@ -1,23 +1,34 @@
 const jwt_decode = require('jwt-decode');
+const jwt = require('jsonwebtoken');
 
-const decodebutton = document.getElementById('decodejwtbtn');
-const clearbutton = document.getElementById('clearjwtbtn');
+const decodeButton = document.getElementById('decodejwtbtn');
+const clearButton = document.getElementById('clearjwtbtn');
 const input = document.getElementById('tokeninput');
 const result = document.getElementById('tokenresult');
 const headers = document.getElementById('tokenheaders');
-const alertcolumn = document.getElementById('alertcolumn');
+const alertColumn = document.getElementById('alertcolumn');
+const validateButton = document.getElementById('validatejwtbtn');
+const algorithm = document.getElementById('algorithmresult');
+const secretInput = document.getElementById('secretinput');
+const validityResult = document.getElementById('validityresult');
+
+const defaultResultMessage = 'Data goes here...';
+const defaultHeaderMessage = 'Headers go here...';
 
 let flag = false; // true means an alert is already present
+let decodedToken = null;
+let decodedHeader = null;
+let token = null;
 
-function removeAlert(){
-    if(flag == true){
+function removeAlert() {
+    if (flag == true) {
         // An alert exists already and we are removing it
-        alertcolumn.removeChild(alertcolumn.firstChild);
+        alertColumn.removeChild(alertColumn.firstChild);
         flag = false;
     }
 }
 
-function createAlert(type, message){
+function createAlert(type, message) {
     removeAlert();
     let alert = document.createElement('div');
     alert.innerHTML = `
@@ -25,35 +36,35 @@ function createAlert(type, message){
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`;
-    alertcolumn.insertBefore(alert, alertcolumn.firstChild);
+    alertColumn.insertBefore(alert, alertColumn.firstChild);
     flag = true;
 }
 
-decodebutton.addEventListener('click', function () {
+decodeButton.addEventListener('click', function () {
     // value works instead of innerHTML or innerText because this is a form element
-    let token = input.value;
+    token = input.value;
     // === takes into account data type whereas == does not
     if (token === '') {
         let type = 'warning';
-        let message = 'Text area cannot be empty!';
+        let message = 'Token field cannot be empty!';
         createAlert(type, message);
     } else {
         try {
-            let decoded = jwt_decode(token);
-            let decodedJSON = JSON.stringify(decoded, null, 2);
-            result.textContent = decodedJSON;
+            decodedToken = jwt_decode(token);
+            let decodedTokenJSON = JSON.stringify(decodedToken, null, 2);
+            result.innerHTML = decodedTokenJSON;
 
-            var decodedHeader = jwt_decode(token, { header: true });
+            decodedHeader = jwt_decode(token, { header: true });
             let decodedHeaderJSON = JSON.stringify(decodedHeader, null, 2);
-            headers.textContent = decodedHeaderJSON;
+            headers.innerHTML = decodedHeaderJSON;
             removeAlert();
         } catch (e) {
             if (e.name === 'InvalidTokenError') {
                 let type = 'danger';
                 let message = 'Token entered is invalid!';
                 createAlert(type, message);
-                result.textContent = '-';
-                headers.textContent = '-';
+                result.innerHTML = defaultResultMessage;
+                headers.innerHTML = defaultHeaderMessage;
             }
             else {
                 let type = 'danger';
@@ -61,14 +72,40 @@ decodebutton.addEventListener('click', function () {
                 createAlert(type, message);
                 console.log('Error:', e);
             }
+            decodedToken = null;
+            decodedHeader = null;
         }
     }
 }
 );
 
-clearbutton.addEventListener('click', function () {
+clearButton.addEventListener('click', function () {
     input.value = '';
-    result.textContent = 'Data goes here...';
-    headers.textContent = 'Headers go here...';
+    result.innerHTML = defaultResultMessage;
+    headers.innerHTML = defaultHeaderMessage;
     removeAlert();
+    decodedToken = null;
+    decodedHeader = null;
+});
+
+validateButton.addEventListener('click', function () {
+    let secret = secretInput.value;
+    if (decodedHeader == null || decodedToken == null) {
+        let type = 'warning';
+        let message = 'Please decode a JWT token first!';
+        createAlert(type, message);
+    } else if (secret === '') {
+        let type = 'warning';
+        let message = 'Secret field cannot be empty!';
+        createAlert(type, message);
+    } else {
+        removeAlert();
+        algorithm.innerHTML = decodedHeader.alg;
+        try {
+            jwt.verify(token, secret);
+            validityResult.innerHTML = '<strong>JWT Signature is VALID</strong>';
+        } catch (e) {
+            validityResult.innerHTML = `<strong>${e.message}</strong>`;
+        }
+    }
 });

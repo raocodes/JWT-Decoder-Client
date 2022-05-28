@@ -59,12 +59,11 @@
           <div class="card-header">JWT VERIFICATION</div>
           <div class="card-body">
             <input type="text" class="form-control mb-3" id="secretinput" placeholder="Your secret goes here...">
-            <p class="card-text text-center">Algorithm detected: - </p>
+            <p class="card-text text-center">Algorithm detected: <span id="algorithmresult">-</span></p>
             <div class="text-center">
               <button type="button" class="btn btn-primary mb-3 w-50" id="validatejwtbtn">VALIDATE</button>
             </div>
             <p class="card-text text-center" id="validityresult">Is valid?</p>
-            <p class="card-text text-center" id="expiryresult">Is expired?</p>
           </div>
         </div>
       </div>
