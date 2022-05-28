@@ -1,7 +1,7 @@
 {
   "name": "jwt-decoder-client",
   "productName": "JWT Decoder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple web app to decode your JWT tokens!",
   "main": "src/index.js",
   "scripts": {
@@ -26,22 +26,14 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "jwt_decoder_client"
+            "name": "JWT Decoder"
           }
         },
         {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "name": "JWT Decoder"
+          }
         }
       ]
     }
@@ -53,10 +45,8 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-deb": "^6.0.0-beta.63",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
-    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.63",
     "electron": "19.0.0",
     "eslint": "^8.16.0"
   }
