@@ -25,3 +25,21 @@ npm install
 ```
 npm run make
 ```
+
+## Demo:
+
+### Dark mode using bootstrap-dark-5:
+
+![](Videos/1_theme_bootstrap.gif)
+
+### Decoding JWT Token:
+
+![](Videos/2_decoding.gif)
+
+### Verification of JWT Token:
+
+![](Videos/3_verification.gif)
+
+### Check for supported algorithms:
+
+![](Videos/4_algocheck.gif)
