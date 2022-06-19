@@ -12,7 +12,7 @@ Installers are built using [electron-forge](https://www.electronforge.io/).
 
 ## Link to Download:
 
-https://www.icloud.com/iclouddrive/0a6hYdvcYUdecU0N9NaL0qGZA#JWT_Decoder
+https://1drv.ms/u/s!AoNKM5gi35IWhbpDvgFqQnRqHw0Q4Q?e=7xtFKE
 
 ## Build Instructions:
 ### Before building install all dependencies:
