@@ -1,5 +1,5 @@
 # JWT-Decoder-Client
-A simple electron app to decode your JWT tokens. Supports decoding of all JWT tokens and verification/expiry check on tokens encrypted with HMAC signing method (HS256, HS384, HS512).
+A simple electron app to decode your JSON Web tokens. Supports decoding of all JSON web tokens and verification/expiry check on tokens encrypted with HMAC signing method (HS256, HS384, HS512).
 
 The app is built using Bootstrap 5 ([bootstrap-dark-5](https://github.com/vinorodrigues/bootstrap-dark-5) used for automatic theme switching based on OS theme setting), ElectronJS and the following node modules:
 
